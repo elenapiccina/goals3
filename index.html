@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ice Cream Goals</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --cream: #fffaf0;
+  --bg: #f8f1df;
+  --text: #3f4140;
+  --muted: #8c8a82;
+  --border: rgba(80,75,65,.12);
+
+  --lemon: #f4df83;
+  --lemon-light: #fff5c9;
+
+  --pistachio: #c9dcb5;
+  --pistachio-light: #edf4e5;
+
+  --blueberry: #b8c4e2;
+  --blueberry-light: #e8ecf7;
+
+  --cappuccino: #cbb49b;
+  --cappuccino-light: #eee3d6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  background: transparent;
+  color: var(--text);
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.app {
+  width: 100%;
+  max-width: 760px;
+  margin: auto;
+}
+
+/* HEADER */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+.sound-button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--cream);
+  cursor: pointer;
+  font-size: 17px;
+}
+
+/* ADD GOAL */
+
+.add-box {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 14px;
+  margin-bottom: 18px;
+}
+
+.goal-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 15px;
+  padding: 8px;
+}
+
+.goal-input::placeholder {
+  color: #aaa69d;
+}
+
+.goal-controls {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.type-button {
+  border: none;
+  padding: 8px 13px;
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.type-button.active {
+  outline: 2px solid rgba(63,65,64,.35);
+}
+
+.quick {
+  background: var(--lemon-light);
+}
+
+.small {
+  background: var(--pistachio-light);
+}
+
+.big {
+  background: var(--blueberry-light);
+}
+
+.future {
+  background: var(--cappuccino-light);
+}
+
+.add-button {
+  margin-left: auto;
+  border: none;
+  border-radius: 14px;
+  padding: 8px 16px;
+  background: var(--text);
+  color: white;
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+/* FILTERS */
+
+.filters {
+  display: flex;
+  gap: 7px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+.filter {
+  border: 1px solid var(--border);
+  background: transparent;
+  border-radius: 15px;
+  padding: 7px 12px;
+  white-space: nowrap;
+  font-family: inherit;
+  font-size: 11px;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.filter.active {
+  background: var(--cream);
+}
+
+/* GOALS */
+
+.goals {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.goal {
+  padding: 13px 14px;
+  border-radius: 17px;
+  border: 1px solid var(--border);
+  transition: .2s;
+}
+
+.goal.quick-goal {
+  background: var(--lemon-light);
+}
+
+.goal.small-goal {
+  background: var(--pistachio-light);
+}
+
+.goal.big-goal {
+  background: var(--blueberry-light);
+}
+
+.goal.future-goal {
+  background: var(--cappuccino-light);
+}
+
+.goal.completed {
+  opacity: .58;
+}
+
+/* MAIN GOAL ROW */
+
+.goal-main {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.checkbox {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(63,65,64,.35);
+  background: rgba(255,255,255,.35);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  padding: 0;
+}
+
+.completed .checkbox {
+  background: var(--text);
+  color: white;
+}
+
+.goal-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.goal-name {
+  font-size: 13px;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.completed .goal-name {
+  text-decoration: line-through;
+}
+
+.goal-type {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+.delete {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 7px;
+}
+
+/* SUBTASK TOGGLE */
+
+.subtask-toggle {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 10px;
+  padding: 5px 0 0 33px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.subtask-toggle:hover {
+  color: var(--text);
+}
+
+/* SUBTASK AREA */
+
+.subtasks {
+  margin-left: 33px;
+  margin-top: 7px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.subtask {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 25px;
+}
+
+.subtask-checkbox {
+  width: 15px;
+  height: 15px;
+  min-width: 15px;
+  border-radius: 4px;
+  border: 1px solid rgba(63,65,64,.3);
+  background: rgba(255,255,255,.35);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  padding: 0;
+}
+
+.subtask.done .subtask-checkbox {
+  background: var(--text);
+  color: white;
+}
+
+.subtask-text {
+  font-size: 10px;
+  line-height: 1.3;
+  flex: 1;
+}
+
+.subtask.done .subtask-text {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.subtask-delete {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 3px;
+}
+
+.subtask-input-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 4px;
+}
+
+.subtask-input {
+  flex: 1;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 10px;
+  color: var(--text);
+  padding: 5px 2px;
+}
+
+.subtask-input::placeholder {
+  color: #aaa69d;
+}
+
+.subtask-add {
+  border: none;
+  background: rgba(255,255,255,.45);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 10px;
+  padding: 5px 8px;
+  cursor: pointer;
+}
+
+/* SUBTASK PROGRESS */
+
+.subtask-progress {
+  font-size: 9px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* EMPTY */
+
+.empty {
+  text-align: center;
+  padding: 40px 15px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.empty-icon {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+/* PROGRESS */
+
+.progress-area {
+  margin-top: 20px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255,250,240,.65);
+  border: 1px solid var(--border);
+}
+
+.progress-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.progress-bar {
+  height: 7px;
+  background: rgba(80,75,65,.08);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(
+    90deg,
+    var(--lemon),
+    var(--pistachio),
+    var(--blueberry)
+  );
+  border-radius: 20px;
+  transition: width .4s ease;
+}
+
+/* CONFETTI */
+
+.confetti {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  pointer-events: none;
+  z-index: 9999;
+  animation: fall 900ms ease-out forwards;
+}
+
+@keyframes fall {
+  0% {
+    transform: translate(0,0) rotate(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform:
+      translate(var(--x), var(--y))
+      rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 500px) {
+
+  body {
+    padding: 12px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .add-button {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .type-button {
+    flex: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+
+<body>
+
+<div class="app">
+
+  <!-- HEADER -->
+
+  <div class="header">
+
+    <div>
+      <h1 class="title">My Goals</h1>
+      <div class="subtitle">
+        small steps → big life
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="sound-button"
+      id="soundButton"
+      aria-label="Toggle sound">
+      🔊
+    </button>
+
+  </div>
+
+
+  <!-- ADD GOAL -->
+
+  <div class="add-box">
+
+    <input
+      id="goalInput"
+      class="goal-input"
+      type="text"
+      maxlength="120"
+      placeholder="What do you want to make happen?"
+      autocomplete="off"
+    >
+
+    <div class="goal-controls">
+
+      <button
+        type="button"
+        class="type-button quick active"
+        data-type="quick">
+        🍋 Quick
+      </button>
+
+      <button
+        type="button"
+        class="type-button small"
+        data-type="small">
+        🥑 Small
+      </button>
+
+      <button
+        type="button"
+        class="type-button big"
+        data-type="big">
+        🫐 Big
+      </button>
+
+      <button
+        type="button"
+        class="type-button future"
+        data-type="future">
+        ☕ Future
+      </button>
+
+      <button
+        type="button"
+        class="add-button"
+        id="addButton">
+        + Add goal
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- FILTERS -->
+
+  <div class="filters">
+
+    <button
+      type="button"
+      class="filter active"
+      data-filter="all">
+      All
+    </button>
+
+    <button
+      type="button"
+      class="filter"
+      data-filter="quick">
+      🍋 Quick
+    </button>
+
+    <button
+      type="button"
+      class="filter"
+      data-filter="small">
+      🥑 Small
+    </button>
+
+    <button
+      type="button"
+      class="filter"
+      data-filter="big">
+      🫐 Big
+    </button>
+
+    <button
+      type="button"
+      class="filter"
+      data-filter="future">
+      ☕ Future
+    </button>
+
+    <button
+      type="button"
+      class="filter"
+      data-filter="completed">
+      ✓ Done
+    </button>
+
+  </div>
+
+
+  <!-- GOALS -->
+
+  <div id="goals" class="goals"></div>
+
+
+  <!-- OVERALL PROGRESS -->
+
+  <div class="progress-area">
+
+    <div class="progress-top">
+
+      <span>Your progress</span>
+
+      <span id="progressText">
+        0 / 0
+      </span>
+
+    </div>
+
+    <div class="progress-bar">
+
+      <div
+        class="progress-fill"
+        id="progressFill">
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+(function () {
+
+  const input =
+    document.getElementById("goalInput");
+
+  const addButton =
+    document.getElementById("addButton");
+
+  const goalsContainer =
+    document.getElementById("goals");
+
+  const progressText =
+    document.getElementById("progressText");
+
+  const progressFill =
+    document.getElementById("progressFill");
+
+  const soundButton =
+    document.getElementById("soundButton");
+
+
+  /* -------------------------
+     LOAD DATA
+  ------------------------- */
+
+  let goals = [];
+
+  try {
+
+    goals =
+      JSON.parse(
+        localStorage.getItem("iceCreamGoals") || "[]"
+      );
+
+    if (!Array.isArray(goals)) {
+      goals = [];
+    }
+
+  } catch (error) {
+
+    goals = [];
+
+  }
+
+
+  /* -------------------------
+     STATE
+  ------------------------- */
+
+  let selectedType = "quick";
+  let activeFilter = "all";
+  let soundEnabled = true;
+
+
+  /* -------------------------
+     TYPE SELECTION
+  ------------------------- */
+
+  document
+    .querySelectorAll(".type-button")
+    .forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        selectedType =
+          button.dataset.type;
+
+        document
+          .querySelectorAll(".type-button")
+          .forEach(btn => {
+            btn.classList.remove("active");
+          });
+
+        button.classList.add("active");
+
+      });
+
+    });
+
+
+  /* -------------------------
+     FILTERS
+  ------------------------- */
+
+  document
+    .querySelectorAll(".filter")
+    .forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        activeFilter =
+          button.dataset.filter;
+
+        document
+          .querySelectorAll(".filter")
+          .forEach(btn => {
+            btn.classList.remove("active");
+          });
+
+        button.classList.add("active");
+
+        render();
+
+      });
+
+    });
+
+
+  /* -------------------------
+     ADD GOAL
+  ------------------------- */
+
+  function addGoal() {
+
+    const text =
+      input.value.trim();
+
+    if (!text) {
+
+      input.focus();
+
+      return;
+    }
+
+
+    const goal = {
+
+      id: Date.now(),
+
+      text: text,
+
+      type: selectedType,
+
+      completed: false,
+
+      subtasks: [],
+
+      subtasksOpen: false
+
+    };
+
+
+    goals.unshift(goal);
+
+    save();
+
+    input.value = "";
+
+    render();
+
+    input.focus();
+
+  }
+
+
+  addButton.addEventListener(
+    "click",
+    addGoal
+  );
+
+
+  input.addEventListener(
+    "keydown",
+    event => {
+
+      if (event.key === "Enter") {
+
+        event.preventDefault();
+
+        addGoal();
+
+      }
+
+    }
+  );
+
+
+  /* -------------------------
+     COMPLETE MAIN GOAL
+  ------------------------- */
+
+  function completeGoal(id) {
+
+    const goal =
+      goals.find(g => g.id === id);
+
+    if (!goal) return;
+
+
+    goal.completed =
+      !goal.completed;
+
+
+    save();
+
+
+    if (goal.completed) {
+
+      celebrate();
+
+      playSound();
+
+    }
+
+
+    render();
+
+  }
+
+
+  /* -------------------------
+     OPEN SUBTASKS
+  ------------------------- */
+
+  function toggleSubtasks(id) {
+
+    const goal =
+      goals.find(g => g.id === id);
+
+    if (!goal) return;
+
+
+    goal.subtasksOpen =
+      !goal.subtasksOpen;
+
+
+    save();
+
+    render();
+
+  }
+
+
+  /* -------------------------
+     ADD SUBTASK
+  ------------------------- */
+
+  function addSubtask(id, inputElement) {
+
+    const text =
+      inputElement.value.trim();
+
+    if (!text) {
+
+      inputElement.focus();
+
+      return;
+
+    }
+
+
+    const goal =
+      goals.find(g => g.id === id);
+
+    if (!goal) return;
+
+
+    if (!Array.isArray(goal.subtasks)) {
+      goal.subtasks = [];
+    }
+
+
+    goal.subtasks.push({
+
+      id:
+        Date.now() +
+        Math.random(),
+
+      text: text,
+
+      completed: false
+
+    });
+
+
+    goal.subtasksOpen = true;
+
+
+    save();
+
+    render();
+
+
+    /*
+      Put focus back into the
+      newly-created subtask input.
+    */
+
+    const newInput =
+      document.querySelector(
+        `[data-subtask-input="${id}"]`
+      );
+
+    if (newInput) {
+      newInput.focus();
+    }
+
+  }
+
+
+  /* -------------------------
+     COMPLETE SUBTASK
+  ------------------------- */
+
+  function completeSubtask(
+    goalId,
+    subtaskId
+  ) {
+
+    const goal =
+      goals.find(g => g.id === goalId);
+
+    if (!goal) return;
+
+
+    const subtask =
+      goal.subtasks.find(
+        s => s.id === subtaskId
+      );
+
+    if (!subtask) return;
+
+
+    subtask.completed =
+      !subtask.completed;
+
+
+    save();
+
+
+    if (subtask.completed) {
+      playSound();
+    }
+
+
+    render();
+
+  }
+
+
+  /* -------------------------
+     DELETE SUBTASK
+  ------------------------- */
+
+  function deleteSubtask(
+    goalId,
+    subtaskId
+  ) {
+
+    const goal =
+      goals.find(g => g.id === goalId);
+
+    if (!goal) return;
+
+
+    goal.subtasks =
+      goal.subtasks.filter(
+        s => s.id !== subtaskId
+      );
+
+
+    /*
+      If the user deletes every
+      subtask, hide the subtask
+      interface again.
+    */
+
+    if (goal.subtasks.length === 0) {
+      goal.subtasksOpen = false;
+    }
+
+
+    save();
+
+    render();
+
+  }
+
+
+  /* -------------------------
+     DELETE GOAL
+  ------------------------- */
+
+  function deleteGoal(id) {
+
+    goals =
+      goals.filter(
+        g => g.id !== id
+      );
+
+    save();
+
+    render();
+
+  }
+
+
+  /* -------------------------
+     RENDER
+  ------------------------- */
+
+  function render() {
+
+    goalsContainer.innerHTML = "";
+
+
+    const visibleGoals =
+      goals.filter(goal => {
+
+        if (activeFilter === "all") {
+          return true;
+        }
+
+
+        if (activeFilter === "completed") {
+          return goal.completed;
+        }
+
+
+        return (
+          goal.type === activeFilter
+        );
+
+      });
+
+
+    if (visibleGoals.length === 0) {
+
+      goalsContainer.innerHTML = `
+
+        <div class="empty">
+
+          <div class="empty-icon">
+            🍦
+          </div>
+
+          No goals here yet.
+
+        </div>
+
+      `;
+
+    }
+
+
+    visibleGoals.forEach(goal => {
+
+      /*
+        Backwards compatibility:
+        old goals without subtasks
+        automatically get an empty array.
+      */
+
+      if (!Array.isArray(goal.subtasks)) {
+        goal.subtasks = [];
+      }
+
+
+      const item =
+        document.createElement("div");
+
+
+      item.className =
+        `goal ${goal.type}-goal ${
+          goal.completed
+            ? "completed"
+            : ""
+        }`;
+
+
+      /* MAIN GOAL */
+
+      const main =
+        document.createElement("div");
+
+      main.className =
+        "goal-main";
+
+
+      const checkbox =
+        document.createElement("button");
+
+      checkbox.type = "button";
+
+      checkbox.className =
+        "checkbox";
+
+      checkbox.setAttribute(
+        "aria-label",
+        goal.completed
+          ? "Mark goal incomplete"
+          : "Complete goal"
+      );
+
+      checkbox.textContent =
+        goal.completed
+          ? "✓"
+          : "";
+
+
+      checkbox.addEventListener(
+        "click",
+        () => completeGoal(goal.id)
+      );
+
+
+      const content =
+        document.createElement("div");
+
+      content.className =
+        "goal-content";
+
+
+      const name =
+        document.createElement("div");
+
+      name.className =
+        "goal-name";
+
+      name.textContent =
+        goal.text;
+
+
+      const type =
+        document.createElement("div");
+
+      type.className =
+        "goal-type";
+
+      type.textContent =
+        getTypeName(goal.type);
+
+
+      content.appendChild(name);
+
+      content.appendChild(type);
+
+
+      const deleteButton =
+        document.createElement("button");
+
+      deleteButton.type = "button";
+
+      deleteButton.className =
+        "delete";
+
+      deleteButton.textContent =
+        "×";
+
+      deleteButton.setAttribute(
+        "aria-label",
+        "Delete goal"
+      );
+
+
+      deleteButton.addEventListener(
+        "click",
+        () => deleteGoal(goal.id)
+      );
+
+
+      main.appendChild(checkbox);
+
+      main.appendChild(content);
+
+      main.appendChild(deleteButton);
+
+
+      item.appendChild(main);
+
+
+      /*
+        IMPORTANT:
+        No subtask UI is shown
+        unless the user has
+        explicitly opened it.
+      */
+
+      if (
+        goal.subtasksOpen ||
+        goal.subtasks.length > 0
+      ) {
+
+        renderSubtasks(
+          item,
+          goal
+        );
+
+      } else {
+
+        const subtaskToggle =
+          document.createElement("button");
+
+        subtaskToggle.type = "button";
+
+        subtaskToggle.className =
+          "subtask-toggle";
+
+        subtaskToggle.textContent =
+          "+ subtask";
+
+
+        subtaskToggle.addEventListener(
+          "click",
+          () => {
+
+            goal.subtasksOpen = true;
+
+            save();
+
+            render();
+
+          }
+        );
+
+
+        item.appendChild(
+          subtaskToggle
+        );
+
+      }
+
+
+      goalsContainer.appendChild(item);
+
+    });
+
+
+    updateProgress();
+
+  }
+
+
+  /* -------------------------
+     RENDER SUBTASKS
+  ------------------------- */
+
+  function renderSubtasks(
+    parent,
+    goal
+  ) {
+
+    const subtasks =
+      document.createElement("div");
+
+    subtasks.className =
+      "subtasks";
+
+
+    /*
+      Existing subtasks
+    */
+
+    goal.subtasks.forEach(
+      subtask => {
+
+        const row =
+          document.createElement("div");
+
+        row.className =
+          `subtask ${
+            subtask.completed
+              ? "done"
+              : ""
+          }`;
+
+
+        const check =
+          document.createElement("button");
+
+        check.type = "button";
+
+        check.className =
+          "subtask-checkbox";
+
+        check.textContent =
+          subtask.completed
+            ? "✓"
+            : "";
+
+
+        check.setAttribute(
+          "aria-label",
+          "Complete subtask"
+        );
+
+
+        check.addEventListener(
+          "click",
+          () => {
+
+            completeSubtask(
+              goal.id,
+              subtask.id
+            );
+
+          }
+        );
+
+
+        const text =
+          document.createElement("div");
+
+        text.className =
+          "subtask-text";
+
+        text.textContent =
+          subtask.text;
+
+
+        const remove =
+          document.createElement("button");
+
+        remove.type = "button";
+
+        remove.className =
+          "subtask-delete";
+
+        remove.textContent =
+          "×";
+
+        remove.setAttribute(
+          "aria-label",
+          "Delete subtask"
+        );
+
+
+        remove.addEventListener(
+          "click",
+          () => {
+
+            deleteSubtask(
+              goal.id,
+              subtask.id
+            );
+
+          }
+        );
+
+
+        row.appendChild(check);
+
+        row.appendChild(text);
+
+        row.appendChild(remove);
+
+        subtasks.appendChild(row);
+
+      }
+    );
+
+
+    /*
+      Subtask input
+    */
+
+    const inputRow =
+      document.createElement("div");
+
+    inputRow.className =
+      "subtask-input-row";
+
+
+    const subtaskInput =
+      document.createElement("input");
+
+    subtaskInput.type = "text";
+
+    subtaskInput.className =
+      "subtask-input";
+
+    subtaskInput.maxLength = 100;
+
+    subtaskInput.placeholder =
+      "add a tiny step…";
+
+    subtaskInput.dataset.subtaskInput =
+      goal.id;
+
+
+    const addSubtaskButton =
+      document.createElement("button");
+
+    addSubtaskButton.type = "button";
+
+    addSubtaskButton.className =
+      "subtask-add";
+
+    addSubtaskButton.textContent =
+      "+";
+
+
+    addSubtaskButton.addEventListener(
+      "click",
+      () => {
+
+        addSubtask(
+          goal.id,
+          subtaskInput
+        );
+
+      }
+    );
+
+
+    subtaskInput.addEventListener(
+      "keydown",
+      event => {
+
+        if (event.key === "Enter") {
+
+          event.preventDefault();
+
+          addSubtask(
+            goal.id,
+            subtaskInput
+          );
+
+        }
+
+        if (
+          event.key === "Escape"
+        ) {
+
+          goal.subtasksOpen = false;
+
+          save();
+
+          render();
+
+        }
+
+      }
+    );
+
+
+    inputRow.appendChild(
+      subtaskInput
+    );
+
+    inputRow.appendChild(
+      addSubtaskButton
+    );
+
+
+    subtasks.appendChild(
+      inputRow
+    );
+
+
+    /*
+      Progress only appears
+      when there is at least
+      one actual subtask.
+    */
+
+    if (goal.subtasks.length > 0) {
+
+      const completed =
+        goal.subtasks.filter(
+          s => s.completed
+        ).length;
+
+
+      const progress =
+        document.createElement("div");
+
+      progress.className =
+        "subtask-progress";
+
+      progress.textContent =
+        `${completed} / ${goal.subtasks.length} steps`;
+
+
+      subtasks.appendChild(
+        progress
+      );
+
+    }
+
+
+    parent.appendChild(
+      subtasks
+    );
+
+  }
+
+
+  /* -------------------------
+     OVERALL PROGRESS
+  ------------------------- */
+
+  function updateProgress() {
+
+    const total =
+      goals.length;
+
+    const completed =
+      goals.filter(
+        goal => goal.completed
+      ).length;
+
+
+    progressText.textContent =
+      `${completed} / ${total}`;
+
+
+    const percentage =
+      total === 0
+        ? 0
+        : Math.round(
+            (completed / total) * 100
+          );
+
+
+    progressFill.style.width =
+      percentage + "%";
+
+  }
+
+
+  /* -------------------------
+     CONFETTI
+  ------------------------- */
+
+  function celebrate() {
+
+    const colors = [
+
+      "#f4df83",
+      "#c9dcb5",
+      "#b8c4e2",
+      "#cbb49b",
+      "#fff5c9"
+
+    ];
+
+
+    for (
+      let i = 0;
+      i < 28;
+      i++
+    ) {
+
+      const piece =
+        document.createElement("div");
+
+
+      piece.className =
+        "confetti";
+
+
+      piece.style.left =
+        window.innerWidth / 2 + "px";
+
+
+      piece.style.top =
+        window.innerHeight / 3 + "px";
+
+
+      piece.style.background =
+        colors[
+          Math.floor(
+            Math.random() *
+            colors.length
+          )
+        ];
+
+
+      piece.style.borderRadius =
+        Math.random() > .5
+          ? "50%"
+          : "2px";
+
+
+      piece.style.setProperty(
+        "--x",
+        ((Math.random() - .5) * 350) +
+        "px"
+      );
+
+
+      piece.style.setProperty(
+        "--y",
+        ((Math.random() - .2) * 280) +
+        "px"
+      );
+
+
+      document.body.appendChild(
+        piece
+      );
+
+
+      setTimeout(
+        () => piece.remove(),
+        1000
+      );
+
+    }
+
+  }
+
+
+  /* -------------------------
+     SOUND
+  ------------------------- */
+
+  function playSound() {
+
+    if (!soundEnabled) return;
+
+
+    try {
+
+      const AudioContext =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+
+      if (!AudioContext) return;
+
+
+      const ctx =
+        new AudioContext();
+
+
+      const oscillator =
+        ctx.createOscillator();
+
+
+      const gain =
+        ctx.createGain();
+
+
+      oscillator.type =
+        "sine";
+
+
+      oscillator.frequency.setValueAtTime(
+        520,
+        ctx.currentTime
+      );
+
+
+      oscillator.frequency.exponentialRampToValueAtTime(
+        780,
+        ctx.currentTime + .12
+      );
+
+
+      gain.gain.setValueAtTime(
+        .0001,
+        ctx.currentTime
+      );
+
+
+      gain.gain.exponentialRampToValueAtTime(
+        .15,
+        ctx.currentTime + .01
+      );
+
+
+      gain.gain.exponentialRampToValueAtTime(
+        .0001,
+        ctx.currentTime + .25
+      );
+
+
+      oscillator.connect(gain);
+
+      gain.connect(ctx.destination);
+
+      oscillator.start();
+
+      oscillator.stop(
+        ctx.currentTime + .25
+      );
+
+    } catch (error) {
+
+      /* Sound is optional. */
+
+    }
+
+  }
+
+
+  /* -------------------------
+     SOUND TOGGLE
+  ------------------------- */
+
+  soundButton.addEventListener(
+    "click",
+    () => {
+
+      soundEnabled =
+        !soundEnabled;
+
+
+      soundButton.textContent =
+        soundEnabled
+          ? "🔊"
+          : "🔇";
+
+    }
+  );
+
+
+  /* -------------------------
+     HELPERS
+  ------------------------- */
+
+  function getTypeName(type) {
+
+    const names = {
+
+      quick: "Quick task",
+
+      small: "Small goal",
+
+      big: "Big goal",
+
+      future: "Future goal"
+
+    };
+
+
+    return (
+      names[type] ||
+      "Goal"
+    );
+
+  }
+
+
+  /* -------------------------
+     SAVE
+  ------------------------- */
+
+  function save() {
+
+    try {
+
+      localStorage.setItem(
+        "iceCreamGoals",
+        JSON.stringify(goals)
+      );
+
+    } catch (error) {
+
+      /* Continue working even
+         if browser storage fails. */
+
+    }
+
+  }
+
+
+  /* -------------------------
+     START
+  ------------------------- */
+
+  render();
+
+})();
+</script>
+
+</body>
+</html>
