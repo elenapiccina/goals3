@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,496 +10,580 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
 
 :root {
-  --cream: #fffaf0;
-  --bg: #f8f1df;
-  --text: #3f4140;
-  --muted: #8c8a82;
-  --border: rgba(80,75,65,.12);
+  --cream:#fffaf0;
+  --text:#41413f;
+  --muted:#949087;
+  --border:rgba(70,65,55,.11);
 
-  --lemon: #f4df83;
-  --lemon-light: #fff5c9;
+  --lemon:#f4df83;
+  --lemon-bg:#fff5c9;
 
-  --pistachio: #c9dcb5;
-  --pistachio-light: #edf4e5;
+  --pistachio:#c9dcb5;
+  --pistachio-bg:#edf4e5;
 
-  --blueberry: #b8c4e2;
-  --blueberry-light: #e8ecf7;
+  --blueberry:#b8c4e2;
+  --blueberry-bg:#e8ecf7;
 
-  --cappuccino: #cbb49b;
-  --cappuccino-light: #eee3d6;
+  --cappuccino:#cbb49b;
+  --cappuccino-bg:#eee3d6;
 }
 
 * {
-  box-sizing: border-box;
+  box-sizing:border-box;
 }
 
 body {
-  margin: 0;
-  padding: 20px;
-  background: transparent;
-  color: var(--text);
-  font-family: "Plus Jakarta Sans", sans-serif;
+  margin:0;
+  padding:14px;
+  background:transparent;
+  color:var(--text);
+  font-family:"Plus Jakarta Sans",sans-serif;
 }
 
 .app {
-  width: 100%;
-  max-width: 760px;
-  margin: auto;
+  width:100%;
+  max-width:720px;
+  margin:auto;
 }
 
 /* HEADER */
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:15px;
 }
 
 .title {
-  font-family: "Playfair Display", serif;
-  font-size: 28px;
-  font-weight: 600;
-  margin: 0;
+  margin:0;
+  font-family:"Playfair Display",serif;
+  font-size:25px;
+  font-weight:600;
 }
 
 .subtitle {
-  font-size: 12px;
-  color: var(--muted);
-  margin-top: 3px;
+  margin-top:2px;
+  color:var(--muted);
+  font-size:10px;
 }
 
 .sound-button {
-  width: 42px;
-  height: 42px;
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  background: var(--cream);
-  cursor: pointer;
-  font-size: 17px;
+  width:34px;
+  height:34px;
+  border:1px solid var(--border);
+  border-radius:50%;
+  background:var(--cream);
+  cursor:pointer;
+  font-size:14px;
 }
 
-/* ADD GOAL */
+/* ADD */
 
 .add-box {
-  background: var(--cream);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 14px;
-  margin-bottom: 18px;
+  background:var(--cream);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:10px;
+  margin-bottom:14px;
 }
 
 .goal-input {
-  width: 100%;
-  border: none;
-  outline: none;
-  background: transparent;
-  color: var(--text);
-  font-family: inherit;
-  font-size: 15px;
-  padding: 8px;
+  width:100%;
+  border:0;
+  outline:0;
+  background:transparent;
+  padding:6px;
+  font-family:inherit;
+  font-size:13px;
+  color:var(--text);
 }
 
 .goal-input::placeholder {
-  color: #aaa69d;
+  color:#aaa69d;
 }
 
 .goal-controls {
-  display: flex;
-  gap: 8px;
-  margin-top: 8px;
-  flex-wrap: wrap;
+  display:flex;
+  gap:5px;
+  margin-top:5px;
+  flex-wrap:wrap;
 }
 
 .type-button {
-  border: none;
-  padding: 8px 13px;
-  border-radius: 14px;
-  font-family: inherit;
-  font-size: 11px;
-  cursor: pointer;
-  color: var(--text);
+  border:0;
+  padding:6px 9px;
+  border-radius:11px;
+  font-family:inherit;
+  font-size:9px;
+  cursor:pointer;
 }
 
 .type-button.active {
-  outline: 2px solid rgba(63,65,64,.35);
+  outline:1.5px solid rgba(60,60,55,.35);
 }
 
 .quick {
-  background: var(--lemon-light);
+  background:var(--lemon-bg);
 }
 
 .small {
-  background: var(--pistachio-light);
+  background:var(--pistachio-bg);
 }
 
 .big {
-  background: var(--blueberry-light);
+  background:var(--blueberry-bg);
 }
 
 .future {
-  background: var(--cappuccino-light);
+  background:var(--cappuccino-bg);
 }
 
 .add-button {
-  margin-left: auto;
-  border: none;
-  border-radius: 14px;
-  padding: 8px 16px;
-  background: var(--text);
-  color: white;
-  font-family: inherit;
-  font-size: 11px;
-  cursor: pointer;
+  margin-left:auto;
+  border:0;
+  border-radius:11px;
+  padding:6px 12px;
+  background:var(--text);
+  color:white;
+  font-family:inherit;
+  font-size:9px;
+  cursor:pointer;
 }
 
-/* FILTERS */
+/* FILTER */
 
 .filters {
-  display: flex;
-  gap: 7px;
-  overflow-x: auto;
-  padding-bottom: 8px;
-  margin-bottom: 12px;
+  display:flex;
+  gap:5px;
+  overflow-x:auto;
+  margin-bottom:12px;
 }
 
 .filter {
-  border: 1px solid var(--border);
-  background: transparent;
-  border-radius: 15px;
-  padding: 7px 12px;
-  white-space: nowrap;
-  font-family: inherit;
-  font-size: 11px;
-  color: var(--text);
-  cursor: pointer;
+  border:1px solid var(--border);
+  background:transparent;
+  border-radius:12px;
+  padding:5px 9px;
+  white-space:nowrap;
+  font-family:inherit;
+  font-size:9px;
+  color:var(--text);
+  cursor:pointer;
 }
 
 .filter.active {
-  background: var(--cream);
+  background:var(--cream);
 }
 
-/* GOALS */
+/* SECTIONS */
+
+.goal-section {
+  margin-bottom:13px;
+}
+
+.section-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:5px;
+  padding:0 3px;
+}
+
+.section-title {
+  display:flex;
+  align-items:center;
+  gap:5px;
+  font-size:10px;
+  font-weight:500;
+}
+
+.section-count {
+  color:var(--muted);
+  font-size:8px;
+}
+
+.section-line {
+  flex:1;
+  height:1px;
+  margin-left:7px;
+  background:var(--border);
+}
+
+/* GOAL CARD */
 
 .goals {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
 }
 
 .goal {
-  padding: 13px 14px;
-  border-radius: 17px;
-  border: 1px solid var(--border);
-  transition: .2s;
+  position:relative;
+  border:1px solid var(--border);
+  border-radius:11px;
+  padding:7px 8px;
+  transition:.15s;
 }
 
 .goal.quick-goal {
-  background: var(--lemon-light);
+  background:var(--lemon-bg);
 }
 
 .goal.small-goal {
-  background: var(--pistachio-light);
+  background:var(--pistachio-bg);
 }
 
 .goal.big-goal {
-  background: var(--blueberry-light);
+  background:var(--blueberry-bg);
 }
 
 .goal.future-goal {
-  background: var(--cappuccino-light);
+  background:var(--cappuccino-bg);
 }
 
-.goal.completed {
-  opacity: .58;
+.goal.dragging {
+  opacity:.45;
 }
 
-/* MAIN GOAL ROW */
+.goal.drag-over {
+  outline:2px dashed rgba(60,60,55,.3);
+}
+
+/* MAIN ROW */
 
 .goal-main {
-  display: flex;
-  align-items: center;
-  gap: 11px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  min-height:25px;
 }
 
+/* DRAG HANDLE */
+
+.drag-handle {
+  width:18px;
+  height:22px;
+  border:0;
+  background:transparent;
+  color:var(--muted);
+  cursor:grab;
+  font-size:11px;
+  padding:0;
+  touch-action:none;
+}
+
+.drag-handle:active {
+  cursor:grabbing;
+}
+
+/* CHECK */
+
 .checkbox {
-  width: 22px;
-  height: 22px;
-  min-width: 22px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(63,65,64,.35);
-  background: rgba(255,255,255,.35);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  padding: 0;
+  width:18px;
+  height:18px;
+  min-width:18px;
+  border-radius:50%;
+  border:1px solid rgba(60,60,55,.28);
+  background:rgba(255,255,255,.3);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:9px;
+  padding:0;
 }
 
 .completed .checkbox {
-  background: var(--text);
-  color: white;
+  background:var(--text);
+  color:white;
 }
 
+/* CONTENT */
+
 .goal-content {
-  flex: 1;
-  min-width: 0;
+  flex:1;
+  min-width:0;
 }
 
 .goal-name {
-  font-size: 13px;
-  line-height: 1.4;
-  word-break: break-word;
+  font-size:11px;
+  line-height:1.3;
+  word-break:break-word;
 }
 
 .completed .goal-name {
-  text-decoration: line-through;
+  text-decoration:line-through;
+  color:var(--muted);
 }
 
 .goal-type {
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: .8px;
-  color: var(--muted);
-  margin-top: 3px;
+  display:none;
 }
 
-.delete {
-  border: none;
-  background: transparent;
-  color: var(--muted);
-  cursor: pointer;
-  font-size: 14px;
-  padding: 7px;
+/* ACTIONS */
+
+.goal-actions {
+  display:flex;
+  align-items:center;
+  gap:1px;
+}
+
+.icon-button {
+  width:23px;
+  height:23px;
+  border:0;
+  background:transparent;
+  color:var(--muted);
+  border-radius:6px;
+  cursor:pointer;
+  font-size:10px;
+  padding:0;
+}
+
+.icon-button:hover {
+  background:rgba(255,255,255,.45);
+  color:var(--text);
 }
 
 /* SUBTASK TOGGLE */
 
 .subtask-toggle {
-  border: none;
-  background: transparent;
-  color: var(--muted);
-  font-family: inherit;
-  font-size: 10px;
-  padding: 5px 0 0 33px;
-  cursor: pointer;
-  text-align: left;
+  border:0;
+  background:transparent;
+  color:var(--muted);
+  font-family:inherit;
+  font-size:8px;
+  padding:3px 0 0 31px;
+  cursor:pointer;
 }
 
-.subtask-toggle:hover {
-  color: var(--text);
-}
-
-/* SUBTASK AREA */
+/* SUBTASKS */
 
 .subtasks {
-  margin-left: 33px;
-  margin-top: 7px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+  margin-left:31px;
+  margin-top:4px;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
 }
 
 .subtask {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  min-height: 25px;
+  display:flex;
+  align-items:center;
+  gap:5px;
+  min-height:21px;
 }
 
 .subtask-checkbox {
-  width: 15px;
-  height: 15px;
-  min-width: 15px;
-  border-radius: 4px;
-  border: 1px solid rgba(63,65,64,.3);
-  background: rgba(255,255,255,.35);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 9px;
-  padding: 0;
+  width:13px;
+  height:13px;
+  min-width:13px;
+  border-radius:3px;
+  border:1px solid rgba(60,60,55,.28);
+  background:rgba(255,255,255,.35);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:7px;
+  padding:0;
 }
 
 .subtask.done .subtask-checkbox {
-  background: var(--text);
-  color: white;
+  background:var(--text);
+  color:white;
 }
 
 .subtask-text {
-  font-size: 10px;
-  line-height: 1.3;
-  flex: 1;
+  flex:1;
+  font-size:9px;
+  line-height:1.3;
 }
 
 .subtask.done .subtask-text {
-  text-decoration: line-through;
-  color: var(--muted);
+  text-decoration:line-through;
+  color:var(--muted);
 }
 
 .subtask-delete {
-  border: none;
-  background: transparent;
-  color: var(--muted);
-  font-size: 12px;
-  cursor: pointer;
-  padding: 3px;
+  border:0;
+  background:transparent;
+  color:var(--muted);
+  font-size:10px;
+  cursor:pointer;
 }
 
 .subtask-input-row {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  margin-top: 4px;
+  display:flex;
+  gap:4px;
+  margin-top:3px;
 }
 
 .subtask-input {
-  flex: 1;
-  border: none;
-  border-bottom: 1px solid var(--border);
-  outline: none;
-  background: transparent;
-  font-family: inherit;
-  font-size: 10px;
-  color: var(--text);
-  padding: 5px 2px;
-}
-
-.subtask-input::placeholder {
-  color: #aaa69d;
+  flex:1;
+  border:0;
+  border-bottom:1px solid var(--border);
+  outline:0;
+  background:transparent;
+  font-family:inherit;
+  font-size:9px;
+  padding:3px 1px;
+  color:var(--text);
 }
 
 .subtask-add {
-  border: none;
-  background: rgba(255,255,255,.45);
-  border-radius: 8px;
-  font-family: inherit;
-  font-size: 10px;
-  padding: 5px 8px;
-  cursor: pointer;
+  border:0;
+  border-radius:6px;
+  background:rgba(255,255,255,.45);
+  font-size:9px;
+  cursor:pointer;
+  padding:3px 7px;
 }
 
-/* SUBTASK PROGRESS */
-
 .subtask-progress {
-  font-size: 9px;
-  color: var(--muted);
-  margin-top: 6px;
+  color:var(--muted);
+  font-size:8px;
+  margin-top:3px;
 }
 
 /* EMPTY */
 
 .empty {
-  text-align: center;
-  padding: 40px 15px;
-  color: var(--muted);
-  font-size: 12px;
+  text-align:center;
+  padding:22px 10px;
+  color:var(--muted);
+  font-size:10px;
 }
 
 .empty-icon {
-  font-size: 30px;
-  margin-bottom: 8px;
+  font-size:22px;
+  margin-bottom:5px;
 }
 
 /* PROGRESS */
 
 .progress-area {
-  margin-top: 20px;
-  padding: 14px 16px;
-  border-radius: 18px;
-  background: rgba(255,250,240,.65);
-  border: 1px solid var(--border);
+  margin-top:15px;
+  padding:9px 11px;
+  border-radius:13px;
+  background:rgba(255,250,240,.65);
+  border:1px solid var(--border);
 }
 
 .progress-top {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  color: var(--muted);
-  margin-bottom: 8px;
+  display:flex;
+  justify-content:space-between;
+  font-size:9px;
+  color:var(--muted);
+  margin-bottom:5px;
 }
 
 .progress-bar {
-  height: 7px;
-  background: rgba(80,75,65,.08);
-  border-radius: 20px;
-  overflow: hidden;
+  height:5px;
+  background:rgba(80,75,65,.08);
+  border-radius:20px;
+  overflow:hidden;
 }
 
 .progress-fill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(
+  height:100%;
+  width:0%;
+  background:linear-gradient(
     90deg,
     var(--lemon),
     var(--pistachio),
     var(--blueberry)
   );
-  border-radius: 20px;
-  transition: width .4s ease;
+  border-radius:20px;
+  transition:width .35s ease;
+}
+
+/* EDIT */
+
+.edit-input {
+  flex:1;
+  min-width:0;
+  border:0;
+  border-bottom:1px solid rgba(60,60,55,.18);
+  outline:0;
+  background:transparent;
+  font-family:inherit;
+  font-size:11px;
+  color:var(--text);
+  padding:3px 2px;
+}
+
+.edit-type {
+  border:0;
+  border-radius:7px;
+  background:rgba(255,255,255,.45);
+  font-family:inherit;
+  font-size:8px;
+  padding:4px;
+  color:var(--text);
 }
 
 /* CONFETTI */
 
 .confetti {
-  position: fixed;
-  width: 8px;
-  height: 8px;
-  pointer-events: none;
-  z-index: 9999;
-  animation: fall 900ms ease-out forwards;
+  position:fixed;
+  width:7px;
+  height:7px;
+  pointer-events:none;
+  z-index:9999;
+  animation:fall .9s ease-out forwards;
 }
 
 @keyframes fall {
   0% {
-    transform: translate(0,0) rotate(0);
-    opacity: 1;
+    transform:translate(0,0) rotate(0);
+    opacity:1;
   }
 
   100% {
-    transform:
-      translate(var(--x), var(--y))
-      rotate(720deg);
-    opacity: 0;
+    transform:translate(var(--x),var(--y)) rotate(720deg);
+    opacity:0;
   }
 }
 
-/* MOBILE */
-
-@media (max-width: 500px) {
+@media(max-width:500px) {
 
   body {
-    padding: 12px;
+    padding:10px;
   }
 
   .title {
-    font-size: 24px;
+    font-size:22px;
   }
 
   .add-button {
-    width: 100%;
-    margin-left: 0;
+    width:100%;
+    margin-left:0;
   }
 
   .type-button {
-    flex: 1;
+    flex:1;
   }
+
+  .goal {
+    padding:6px 7px;
+  }
+
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media(prefers-reduced-motion:reduce) {
 
   *,
   *::before,
   *::after {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
+    animation-duration:.01ms !important;
+    transition-duration:.01ms !important;
   }
+
 }
 </style>
 </head>
-
 
 <body>
 
@@ -510,34 +595,29 @@ body {
 
     <div>
       <h1 class="title">My Goals</h1>
-      <div class="subtitle">
-        small steps → big life
-      </div>
+      <div class="subtitle">small steps → big life</div>
     </div>
 
     <button
       type="button"
       class="sound-button"
-      id="soundButton"
-      aria-label="Toggle sound">
+      id="soundButton">
       🔊
     </button>
 
   </div>
 
 
-  <!-- ADD GOAL -->
+  <!-- ADD -->
 
   <div class="add-box">
 
     <input
       id="goalInput"
       class="goal-input"
-      type="text"
       maxlength="120"
       placeholder="What do you want to make happen?"
-      autocomplete="off"
-    >
+      autocomplete="off">
 
     <div class="goal-controls">
 
@@ -573,7 +653,7 @@ body {
         type="button"
         class="add-button"
         id="addButton">
-        + Add goal
+        + Add
       </button>
 
     </div>
@@ -585,45 +665,27 @@ body {
 
   <div class="filters">
 
-    <button
-      type="button"
-      class="filter active"
-      data-filter="all">
+    <button class="filter active" data-filter="all">
       All
     </button>
 
-    <button
-      type="button"
-      class="filter"
-      data-filter="quick">
+    <button class="filter" data-filter="quick">
       🍋 Quick
     </button>
 
-    <button
-      type="button"
-      class="filter"
-      data-filter="small">
+    <button class="filter" data-filter="small">
       🥑 Small
     </button>
 
-    <button
-      type="button"
-      class="filter"
-      data-filter="big">
+    <button class="filter" data-filter="big">
       🫐 Big
     </button>
 
-    <button
-      type="button"
-      class="filter"
-      data-filter="future">
+    <button class="filter" data-filter="future">
       ☕ Future
     </button>
 
-    <button
-      type="button"
-      class="filter"
-      data-filter="completed">
+    <button class="filter" data-filter="completed">
       ✓ Done
     </button>
 
@@ -632,30 +694,23 @@ body {
 
   <!-- GOALS -->
 
-  <div id="goals" class="goals"></div>
+  <div id="sections"></div>
 
 
-  <!-- OVERALL PROGRESS -->
+  <!-- PROGRESS -->
 
   <div class="progress-area">
 
     <div class="progress-top">
-
       <span>Your progress</span>
-
-      <span id="progressText">
-        0 / 0
-      </span>
-
+      <span id="progressText">0 / 0</span>
     </div>
 
     <div class="progress-bar">
-
       <div
         class="progress-fill"
         id="progressFill">
       </div>
-
     </div>
 
   </div>
@@ -665,7 +720,7 @@ body {
 
 <script>
 
-(function () {
+(function() {
 
   const input =
     document.getElementById("goalInput");
@@ -673,8 +728,8 @@ body {
   const addButton =
     document.getElementById("addButton");
 
-  const goalsContainer =
-    document.getElementById("goals");
+  const sections =
+    document.getElementById("sections");
 
   const progressText =
     document.getElementById("progressText");
@@ -687,7 +742,7 @@ body {
 
 
   /* -------------------------
-     LOAD DATA
+     DATA
   ------------------------- */
 
   let goals = [];
@@ -703,44 +758,87 @@ body {
       goals = [];
     }
 
-  } catch (error) {
+  } catch(e) {
 
     goals = [];
 
   }
 
 
-  /* -------------------------
-     STATE
-  ------------------------- */
+  /* Make old goals compatible */
+
+  goals.forEach(goal => {
+
+    if (!Array.isArray(goal.subtasks)) {
+      goal.subtasks = [];
+    }
+
+    if (typeof goal.subtasksOpen !== "boolean") {
+      goal.subtasksOpen = false;
+    }
+
+  });
+
 
   let selectedType = "quick";
   let activeFilter = "all";
   let soundEnabled = true;
 
 
+  const sectionInfo = {
+
+    quick: {
+      icon:"🍋",
+      name:"Quick",
+      description:"tiny wins"
+    },
+
+    small: {
+      icon:"🥑",
+      name:"Small",
+      description:"build momentum"
+    },
+
+    big: {
+      icon:"🫐",
+      name:"Big",
+      description:"important moves"
+    },
+
+    future: {
+      icon:"☕",
+      name:"Future",
+      description:"not now"
+    }
+
+  };
+
+
   /* -------------------------
-     TYPE SELECTION
+     TYPE BUTTONS
   ------------------------- */
 
   document
     .querySelectorAll(".type-button")
     .forEach(button => {
 
-      button.addEventListener("click", () => {
+      button.addEventListener(
+        "click",
+        () => {
 
-        selectedType =
-          button.dataset.type;
+          selectedType =
+            button.dataset.type;
 
-        document
-          .querySelectorAll(".type-button")
-          .forEach(btn => {
-            btn.classList.remove("active");
-          });
+          document
+            .querySelectorAll(".type-button")
+            .forEach(btn =>
+              btn.classList.remove("active")
+            );
 
-        button.classList.add("active");
+          button.classList.add("active");
 
-      });
+        }
+      );
 
     });
 
@@ -753,22 +851,25 @@ body {
     .querySelectorAll(".filter")
     .forEach(button => {
 
-      button.addEventListener("click", () => {
+      button.addEventListener(
+        "click",
+        () => {
 
-        activeFilter =
-          button.dataset.filter;
+          activeFilter =
+            button.dataset.filter;
 
-        document
-          .querySelectorAll(".filter")
-          .forEach(btn => {
-            btn.classList.remove("active");
-          });
+          document
+            .querySelectorAll(".filter")
+            .forEach(btn =>
+              btn.classList.remove("active")
+            );
 
-        button.classList.add("active");
+          button.classList.add("active");
 
-        render();
+          render();
 
-      });
+        }
+      );
 
     });
 
@@ -787,27 +888,28 @@ body {
       input.focus();
 
       return;
+
     }
 
 
-    const goal = {
+    goals.push({
 
-      id: Date.now(),
+      id:
+        Date.now() +
+        Math.random(),
 
-      text: text,
+      text:text,
 
-      type: selectedType,
+      type:selectedType,
 
-      completed: false,
+      completed:false,
 
-      subtasks: [],
+      subtasks:[],
 
-      subtasksOpen: false
+      subtasksOpen:false
 
-    };
+    });
 
-
-    goals.unshift(goal);
 
     save();
 
@@ -843,23 +945,20 @@ body {
 
 
   /* -------------------------
-     COMPLETE MAIN GOAL
+     COMPLETE
   ------------------------- */
 
   function completeGoal(id) {
 
     const goal =
-      goals.find(g => g.id === id);
+      findGoal(id);
 
     if (!goal) return;
-
 
     goal.completed =
       !goal.completed;
 
-
     save();
-
 
     if (goal.completed) {
 
@@ -869,6 +968,175 @@ body {
 
     }
 
+    render();
+
+  }
+
+
+  /* -------------------------
+     EDIT
+  ------------------------- */
+
+  function startEdit(goal) {
+
+    const card =
+      document.querySelector(
+        `[data-goal-id="${goal.id}"]`
+      );
+
+    if (!card) return;
+
+
+    const content =
+      card.querySelector(".goal-content");
+
+    const actions =
+      card.querySelector(".goal-actions");
+
+
+    content.innerHTML = "";
+
+
+    const editInput =
+      document.createElement("input");
+
+    editInput.className =
+      "edit-input";
+
+    editInput.value =
+      goal.text;
+
+    editInput.maxLength = 120;
+
+
+    const select =
+      document.createElement("select");
+
+    select.className =
+      "edit-type";
+
+
+    ["quick","small","big","future"]
+      .forEach(type => {
+
+        const option =
+          document.createElement("option");
+
+        option.value = type;
+
+        option.textContent =
+          sectionInfo[type].icon +
+          " " +
+          sectionInfo[type].name;
+
+        option.selected =
+          type === goal.type;
+
+        select.appendChild(option);
+
+      });
+
+
+    content.appendChild(editInput);
+
+
+    actions.innerHTML = `
+      <button
+        type="button"
+        class="icon-button save-edit"
+        title="Save">
+        ✓
+      </button>
+      <button
+        type="button"
+        class="icon-button cancel-edit"
+        title="Cancel">
+        ×
+      </button>
+    `;
+
+
+    content.appendChild(select);
+
+
+    function saveEdit() {
+
+      const newText =
+        editInput.value.trim();
+
+      if (!newText) {
+
+        editInput.focus();
+
+        return;
+
+      }
+
+
+      goal.text =
+        newText;
+
+      goal.type =
+        select.value;
+
+      save();
+
+      render();
+
+    }
+
+
+    actions
+      .querySelector(".save-edit")
+      .addEventListener(
+        "click",
+        saveEdit
+      );
+
+
+    actions
+      .querySelector(".cancel-edit")
+      .addEventListener(
+        "click",
+        render
+      );
+
+
+    editInput.addEventListener(
+      "keydown",
+      event => {
+
+        if (event.key === "Enter") {
+          saveEdit();
+        }
+
+        if (event.key === "Escape") {
+          render();
+        }
+
+      }
+    );
+
+
+    editInput.focus();
+
+    editInput.select();
+
+  }
+
+
+  /* -------------------------
+     DELETE
+  ------------------------- */
+
+  function deleteGoal(id) {
+
+    goals =
+      goals.filter(
+        goal => goal.id !== id
+      );
+
+    save();
 
     render();
 
@@ -876,20 +1144,248 @@ body {
 
 
   /* -------------------------
-     OPEN SUBTASKS
+     MOVE UP / DOWN
+  ------------------------- */
+
+  function moveGoal(id, direction) {
+
+    const goalIndex =
+      goals.findIndex(
+        goal => goal.id === id
+      );
+
+    if (goalIndex === -1) return;
+
+
+    const goal =
+      goals[goalIndex];
+
+
+    /*
+      Move only within the same
+      category. This keeps the
+      four sections organized.
+    */
+
+    const sameType =
+      goals
+        .map((g,index) => ({
+          g,
+          index
+        }))
+        .filter(item =>
+          item.g.type === goal.type
+        );
+
+
+    const position =
+      sameType.findIndex(
+        item => item.g.id === id
+      );
+
+
+    const newPosition =
+      position + direction;
+
+
+    if (
+      newPosition < 0 ||
+      newPosition >= sameType.length
+    ) {
+      return;
+    }
+
+
+    const swapIndex =
+      sameType[newPosition].index;
+
+
+    const temp =
+      goals[goalIndex];
+
+    goals[goalIndex] =
+      goals[swapIndex];
+
+    goals[swapIndex] =
+      temp;
+
+
+    save();
+
+    render();
+
+  }
+
+
+  /* -------------------------
+     DRAG & DROP
+  ------------------------- */
+
+  let draggedId = null;
+
+
+  function dragStart(event, goal) {
+
+    draggedId =
+      goal.id;
+
+    event.dataTransfer.effectAllowed =
+      "move";
+
+    event.dataTransfer.setData(
+      "text/plain",
+      String(goal.id)
+    );
+
+
+    const card =
+      event.currentTarget;
+
+    card.classList.add("dragging");
+
+  }
+
+
+  function dragEnd(event) {
+
+    event.currentTarget
+      .classList
+      .remove("dragging");
+
+    draggedId = null;
+
+    document
+      .querySelectorAll(".drag-over")
+      .forEach(card =>
+        card.classList.remove("drag-over")
+      );
+
+  }
+
+
+  function dragOver(event) {
+
+    event.preventDefault();
+
+    event.dataTransfer.dropEffect =
+      "move";
+
+    const card =
+      event.currentTarget;
+
+    card.classList.add("drag-over");
+
+  }
+
+
+  function dragLeave(event) {
+
+    event.currentTarget
+      .classList
+      .remove("drag-over");
+
+  }
+
+
+  function dropGoal(event, targetGoal) {
+
+    event.preventDefault();
+
+    const targetCard =
+      event.currentTarget;
+
+    targetCard.classList.remove(
+      "drag-over"
+    );
+
+
+    if (
+      draggedId === null ||
+      draggedId === targetGoal.id
+    ) {
+      return;
+    }
+
+
+    const dragged =
+      findGoal(draggedId);
+
+    if (!dragged) return;
+
+
+    /*
+      Dragging between sections
+      is allowed and changes the
+      goal category.
+    */
+
+    dragged.type =
+      targetGoal.type;
+
+
+    const draggedIndex =
+      goals.findIndex(
+        g => g.id === draggedId
+      );
+
+    const targetIndex =
+      goals.findIndex(
+        g => g.id === targetGoal.id
+      );
+
+
+    if (
+      draggedIndex === -1 ||
+      targetIndex === -1
+    ) {
+      return;
+    }
+
+
+    goals.splice(
+      draggedIndex,
+      1
+    );
+
+
+    let insertAt =
+      goals.findIndex(
+        g => g.id === targetGoal.id
+      );
+
+
+    if (insertAt === -1) {
+      insertAt = goals.length;
+    }
+
+
+    goals.splice(
+      insertAt,
+      0,
+      dragged
+    );
+
+
+    save();
+
+    render();
+
+  }
+
+
+  /* -------------------------
+     SUBTASK TOGGLE
   ------------------------- */
 
   function toggleSubtasks(id) {
 
     const goal =
-      goals.find(g => g.id === id);
+      findGoal(id);
 
     if (!goal) return;
 
-
     goal.subtasksOpen =
       !goal.subtasksOpen;
-
 
     save();
 
@@ -902,7 +1398,10 @@ body {
      ADD SUBTASK
   ------------------------- */
 
-  function addSubtask(id, inputElement) {
+  function addSubtask(
+    goalId,
+    inputElement
+  ) {
 
     const text =
       inputElement.value.trim();
@@ -917,14 +1416,9 @@ body {
 
 
     const goal =
-      goals.find(g => g.id === id);
+      findGoal(goalId);
 
     if (!goal) return;
-
-
-    if (!Array.isArray(goal.subtasks)) {
-      goal.subtasks = [];
-    }
 
 
     goal.subtasks.push({
@@ -933,34 +1427,20 @@ body {
         Date.now() +
         Math.random(),
 
-      text: text,
+      text:text,
 
-      completed: false
+      completed:false
 
     });
 
 
-    goal.subtasksOpen = true;
+    goal.subtasksOpen =
+      true;
 
 
     save();
 
     render();
-
-
-    /*
-      Put focus back into the
-      newly-created subtask input.
-    */
-
-    const newInput =
-      document.querySelector(
-        `[data-subtask-input="${id}"]`
-      );
-
-    if (newInput) {
-      newInput.focus();
-    }
 
   }
 
@@ -975,7 +1455,7 @@ body {
   ) {
 
     const goal =
-      goals.find(g => g.id === goalId);
+      findGoal(goalId);
 
     if (!goal) return;
 
@@ -994,11 +1474,9 @@ body {
 
     save();
 
-
     if (subtask.completed) {
       playSound();
     }
-
 
     render();
 
@@ -1015,7 +1493,7 @@ body {
   ) {
 
     const goal =
-      goals.find(g => g.id === goalId);
+      findGoal(goalId);
 
     if (!goal) return;
 
@@ -1026,34 +1504,15 @@ body {
       );
 
 
-    /*
-      If the user deletes every
-      subtask, hide the subtask
-      interface again.
-    */
+    if (
+      goal.subtasks.length === 0
+    ) {
 
-    if (goal.subtasks.length === 0) {
-      goal.subtasksOpen = false;
+      goal.subtasksOpen =
+        false;
+
     }
 
-
-    save();
-
-    render();
-
-  }
-
-
-  /* -------------------------
-     DELETE GOAL
-  ------------------------- */
-
-  function deleteGoal(id) {
-
-    goals =
-      goals.filter(
-        g => g.id !== id
-      );
 
     save();
 
@@ -1068,32 +1527,112 @@ body {
 
   function render() {
 
-    goalsContainer.innerHTML = "";
+    sections.innerHTML = "";
 
 
-    const visibleGoals =
-      goals.filter(goal => {
+    const types =
+      ["quick","small","big","future"];
 
-        if (activeFilter === "all") {
-          return true;
-        }
 
+    types.forEach(type => {
+
+      let typeGoals =
+        goals.filter(
+          goal => goal.type === type
+        );
+
+
+      if (activeFilter !== "all") {
 
         if (activeFilter === "completed") {
-          return goal.completed;
+
+          typeGoals =
+            typeGoals.filter(
+              goal => goal.completed
+            );
+
+        } else {
+
+          if (activeFilter !== type) {
+            typeGoals = [];
+          }
+
         }
 
+      }
 
-        return (
-          goal.type === activeFilter
-        );
+
+      if (typeGoals.length === 0) {
+        return;
+      }
+
+
+      const section =
+        document.createElement("section");
+
+      section.className =
+        "goal-section";
+
+
+      const header =
+        document.createElement("div");
+
+      header.className =
+        "section-header";
+
+
+      header.innerHTML = `
+
+        <div class="section-title">
+
+          <span>
+            ${sectionInfo[type].icon}
+          </span>
+
+          <span>
+            ${sectionInfo[type].name}
+          </span>
+
+          <span class="section-count">
+            ${typeGoals.length}
+          </span>
+
+        </div>
+
+        <div class="section-line"></div>
+
+      `;
+
+
+      const list =
+        document.createElement("div");
+
+      list.className =
+        "goals";
+
+
+      typeGoals.forEach(goal => {
+
+        const card =
+          createGoalCard(goal);
+
+        list.appendChild(card);
 
       });
 
 
-    if (visibleGoals.length === 0) {
+      section.appendChild(header);
 
-      goalsContainer.innerHTML = `
+      section.appendChild(list);
+
+      sections.appendChild(section);
+
+    });
+
+
+    if (!sections.children.length) {
+
+      sections.innerHTML = `
 
         <div class="empty">
 
@@ -1110,196 +1649,299 @@ body {
     }
 
 
-    visibleGoals.forEach(goal => {
-
-      /*
-        Backwards compatibility:
-        old goals without subtasks
-        automatically get an empty array.
-      */
-
-      if (!Array.isArray(goal.subtasks)) {
-        goal.subtasks = [];
-      }
-
-
-      const item =
-        document.createElement("div");
-
-
-      item.className =
-        `goal ${goal.type}-goal ${
-          goal.completed
-            ? "completed"
-            : ""
-        }`;
-
-
-      /* MAIN GOAL */
-
-      const main =
-        document.createElement("div");
-
-      main.className =
-        "goal-main";
-
-
-      const checkbox =
-        document.createElement("button");
-
-      checkbox.type = "button";
-
-      checkbox.className =
-        "checkbox";
-
-      checkbox.setAttribute(
-        "aria-label",
-        goal.completed
-          ? "Mark goal incomplete"
-          : "Complete goal"
-      );
-
-      checkbox.textContent =
-        goal.completed
-          ? "✓"
-          : "";
-
-
-      checkbox.addEventListener(
-        "click",
-        () => completeGoal(goal.id)
-      );
-
-
-      const content =
-        document.createElement("div");
-
-      content.className =
-        "goal-content";
-
-
-      const name =
-        document.createElement("div");
-
-      name.className =
-        "goal-name";
-
-      name.textContent =
-        goal.text;
-
-
-      const type =
-        document.createElement("div");
-
-      type.className =
-        "goal-type";
-
-      type.textContent =
-        getTypeName(goal.type);
-
-
-      content.appendChild(name);
-
-      content.appendChild(type);
-
-
-      const deleteButton =
-        document.createElement("button");
-
-      deleteButton.type = "button";
-
-      deleteButton.className =
-        "delete";
-
-      deleteButton.textContent =
-        "×";
-
-      deleteButton.setAttribute(
-        "aria-label",
-        "Delete goal"
-      );
-
-
-      deleteButton.addEventListener(
-        "click",
-        () => deleteGoal(goal.id)
-      );
-
-
-      main.appendChild(checkbox);
-
-      main.appendChild(content);
-
-      main.appendChild(deleteButton);
-
-
-      item.appendChild(main);
-
-
-      /*
-        IMPORTANT:
-        No subtask UI is shown
-        unless the user has
-        explicitly opened it.
-      */
-
-      if (
-        goal.subtasksOpen ||
-        goal.subtasks.length > 0
-      ) {
-
-        renderSubtasks(
-          item,
-          goal
-        );
-
-      } else {
-
-        const subtaskToggle =
-          document.createElement("button");
-
-        subtaskToggle.type = "button";
-
-        subtaskToggle.className =
-          "subtask-toggle";
-
-        subtaskToggle.textContent =
-          "+ subtask";
-
-
-        subtaskToggle.addEventListener(
-          "click",
-          () => {
-
-            goal.subtasksOpen = true;
-
-            save();
-
-            render();
-
-          }
-        );
-
-
-        item.appendChild(
-          subtaskToggle
-        );
-
-      }
-
-
-      goalsContainer.appendChild(item);
-
-    });
-
-
     updateProgress();
 
   }
 
 
   /* -------------------------
-     RENDER SUBTASKS
+     GOAL CARD
+  ------------------------- */
+
+  function createGoalCard(goal) {
+
+    const card =
+      document.createElement("div");
+
+    card.className =
+      `goal ${goal.type}-goal ${
+        goal.completed
+          ? "completed"
+          : ""
+      }`;
+
+
+    card.draggable = true;
+
+    card.dataset.goalId =
+      goal.id;
+
+
+    /* DRAG EVENTS */
+
+    card.addEventListener(
+      "dragstart",
+      event =>
+        dragStart(event, goal)
+    );
+
+    card.addEventListener(
+      "dragend",
+      dragEnd
+    );
+
+    card.addEventListener(
+      "dragover",
+      dragOver
+    );
+
+    card.addEventListener(
+      "dragleave",
+      dragLeave
+    );
+
+    card.addEventListener(
+      "drop",
+      event =>
+        dropGoal(event, goal)
+    );
+
+
+    /* MAIN */
+
+    const main =
+      document.createElement("div");
+
+    main.className =
+      "goal-main";
+
+
+    /* HANDLE */
+
+    const handle =
+      document.createElement("button");
+
+    handle.type = "button";
+
+    handle.className =
+      "drag-handle";
+
+    handle.textContent =
+      "⋮⋮";
+
+    handle.title =
+      "Drag to move";
+
+
+    /*
+      The whole card is draggable,
+      but this visual handle makes
+      the interaction obvious.
+    */
+
+
+    /* CHECK */
+
+    const checkbox =
+      document.createElement("button");
+
+    checkbox.type = "button";
+
+    checkbox.className =
+      "checkbox";
+
+    checkbox.textContent =
+      goal.completed
+        ? "✓"
+        : "";
+
+
+    checkbox.addEventListener(
+      "click",
+      () => completeGoal(goal.id)
+    );
+
+
+    /* CONTENT */
+
+    const content =
+      document.createElement("div");
+
+    content.className =
+      "goal-content";
+
+
+    const name =
+      document.createElement("div");
+
+    name.className =
+      "goal-name";
+
+    name.textContent =
+      goal.text;
+
+
+    content.appendChild(name);
+
+
+    /* ACTIONS */
+
+    const actions =
+      document.createElement("div");
+
+    actions.className =
+      "goal-actions";
+
+
+    const edit =
+      document.createElement("button");
+
+    edit.type = "button";
+
+    edit.className =
+      "icon-button";
+
+    edit.textContent =
+      "✎";
+
+    edit.title =
+      "Edit";
+
+
+    edit.addEventListener(
+      "click",
+      () => startEdit(goal)
+    );
+
+
+    const up =
+      document.createElement("button");
+
+    up.type = "button";
+
+    up.className =
+      "icon-button";
+
+    up.textContent =
+      "↑";
+
+    up.title =
+      "Move up";
+
+
+    up.addEventListener(
+      "click",
+      () => moveGoal(goal.id, -1)
+    );
+
+
+    const down =
+      document.createElement("button");
+
+    down.type = "button";
+
+    down.className =
+      "icon-button";
+
+    down.textContent =
+      "↓";
+
+    down.title =
+      "Move down";
+
+
+    down.addEventListener(
+      "click",
+      () => moveGoal(goal.id, 1)
+    );
+
+
+    const remove =
+      document.createElement("button");
+
+    remove.type = "button";
+
+    remove.className =
+      "icon-button";
+
+    remove.textContent =
+      "×";
+
+    remove.title =
+      "Delete";
+
+
+    remove.addEventListener(
+      "click",
+      () => deleteGoal(goal.id)
+    );
+
+
+    actions.appendChild(edit);
+
+    actions.appendChild(up);
+
+    actions.appendChild(down);
+
+    actions.appendChild(remove);
+
+
+    main.appendChild(handle);
+
+    main.appendChild(checkbox);
+
+    main.appendChild(content);
+
+    main.appendChild(actions);
+
+
+    card.appendChild(main);
+
+
+    /* SUBTASKS */
+
+    if (
+      goal.subtasksOpen ||
+      goal.subtasks.length > 0
+    ) {
+
+      renderSubtasks(
+        card,
+        goal
+      );
+
+    } else {
+
+      const toggle =
+        document.createElement("button");
+
+      toggle.type = "button";
+
+      toggle.className =
+        "subtask-toggle";
+
+      toggle.textContent =
+        "+ subtask";
+
+
+      toggle.addEventListener(
+        "click",
+        () => toggleSubtasks(goal.id)
+      );
+
+
+      card.appendChild(toggle);
+
+    }
+
+
+    return card;
+
+  }
+
+
+  /* -------------------------
+     SUBTASK RENDER
   ------------------------- */
 
   function renderSubtasks(
@@ -1307,16 +1949,12 @@ body {
     goal
   ) {
 
-    const subtasks =
+    const container =
       document.createElement("div");
 
-    subtasks.className =
+    container.className =
       "subtasks";
 
-
-    /*
-      Existing subtasks
-    */
 
     goal.subtasks.forEach(
       subtask => {
@@ -1332,36 +1970,27 @@ body {
           }`;
 
 
-        const check =
+        const checkbox =
           document.createElement("button");
 
-        check.type = "button";
+        checkbox.type = "button";
 
-        check.className =
+        checkbox.className =
           "subtask-checkbox";
 
-        check.textContent =
+        checkbox.textContent =
           subtask.completed
             ? "✓"
             : "";
 
 
-        check.setAttribute(
-          "aria-label",
-          "Complete subtask"
-        );
-
-
-        check.addEventListener(
+        checkbox.addEventListener(
           "click",
-          () => {
-
+          () =>
             completeSubtask(
               goal.id,
               subtask.id
-            );
-
-          }
+            )
         );
 
 
@@ -1386,40 +2015,30 @@ body {
         remove.textContent =
           "×";
 
-        remove.setAttribute(
-          "aria-label",
-          "Delete subtask"
-        );
-
 
         remove.addEventListener(
           "click",
-          () => {
-
+          () =>
             deleteSubtask(
               goal.id,
               subtask.id
-            );
-
-          }
+            )
         );
 
 
-        row.appendChild(check);
+        row.appendChild(checkbox);
 
         row.appendChild(text);
 
         row.appendChild(remove);
 
-        subtasks.appendChild(row);
+        container.appendChild(row);
 
       }
     );
 
 
-    /*
-      Subtask input
-    */
+    /* INPUT */
 
     const inputRow =
       document.createElement("div");
@@ -1428,49 +2047,43 @@ body {
       "subtask-input-row";
 
 
-    const subtaskInput =
+    const input =
       document.createElement("input");
 
-    subtaskInput.type = "text";
+    input.type = "text";
 
-    subtaskInput.className =
+    input.className =
       "subtask-input";
 
-    subtaskInput.maxLength = 100;
-
-    subtaskInput.placeholder =
+    input.placeholder =
       "add a tiny step…";
 
-    subtaskInput.dataset.subtaskInput =
-      goal.id;
+    input.maxLength = 100;
 
 
-    const addSubtaskButton =
+    const add =
       document.createElement("button");
 
-    addSubtaskButton.type = "button";
+    add.type = "button";
 
-    addSubtaskButton.className =
+    add.className =
       "subtask-add";
 
-    addSubtaskButton.textContent =
+    add.textContent =
       "+";
 
 
-    addSubtaskButton.addEventListener(
+    add.addEventListener(
       "click",
-      () => {
-
+      () =>
         addSubtask(
           goal.id,
-          subtaskInput
-        );
-
-      }
+          input
+        )
     );
 
 
-    subtaskInput.addEventListener(
+    input.addEventListener(
       "keydown",
       event => {
 
@@ -1480,20 +2093,25 @@ body {
 
           addSubtask(
             goal.id,
-            subtaskInput
+            input
           );
 
         }
 
-        if (
-          event.key === "Escape"
-        ) {
+        if (event.key === "Escape") {
 
-          goal.subtasksOpen = false;
+          if (
+            goal.subtasks.length === 0
+          ) {
 
-          save();
+            goal.subtasksOpen =
+              false;
 
-          render();
+            save();
+
+            render();
+
+          }
 
         }
 
@@ -1501,25 +2119,14 @@ body {
     );
 
 
-    inputRow.appendChild(
-      subtaskInput
-    );
+    inputRow.appendChild(input);
 
-    inputRow.appendChild(
-      addSubtaskButton
-    );
+    inputRow.appendChild(add);
+
+    container.appendChild(inputRow);
 
 
-    subtasks.appendChild(
-      inputRow
-    );
-
-
-    /*
-      Progress only appears
-      when there is at least
-      one actual subtask.
-    */
+    /* PROGRESS */
 
     if (goal.subtasks.length > 0) {
 
@@ -1539,22 +2146,18 @@ body {
         `${completed} / ${goal.subtasks.length} steps`;
 
 
-      subtasks.appendChild(
-        progress
-      );
+      container.appendChild(progress);
 
     }
 
 
-    parent.appendChild(
-      subtasks
-    );
+    parent.appendChild(container);
 
   }
 
 
   /* -------------------------
-     OVERALL PROGRESS
+     PROGRESS
   ------------------------- */
 
   function updateProgress() {
@@ -1576,12 +2179,43 @@ body {
       total === 0
         ? 0
         : Math.round(
-            (completed / total) * 100
+            completed / total * 100
           );
 
 
     progressFill.style.width =
       percentage + "%";
+
+  }
+
+
+  /* -------------------------
+     FIND
+  ------------------------- */
+
+  function findGoal(id) {
+
+    return goals.find(
+      goal => goal.id === id
+    );
+
+  }
+
+
+  /* -------------------------
+     SAVE
+  ------------------------- */
+
+  function save() {
+
+    try {
+
+      localStorage.setItem(
+        "iceCreamGoals",
+        JSON.stringify(goals)
+      );
+
+    } catch(e) {}
 
   }
 
@@ -1593,37 +2227,31 @@ body {
   function celebrate() {
 
     const colors = [
-
       "#f4df83",
       "#c9dcb5",
       "#b8c4e2",
       "#cbb49b",
       "#fff5c9"
-
     ];
 
 
     for (
       let i = 0;
-      i < 28;
+      i < 25;
       i++
     ) {
 
       const piece =
         document.createElement("div");
 
-
       piece.className =
         "confetti";
-
 
       piece.style.left =
         window.innerWidth / 2 + "px";
 
-
       piece.style.top =
         window.innerHeight / 3 + "px";
-
 
       piece.style.background =
         colors[
@@ -1633,35 +2261,21 @@ body {
           )
         ];
 
-
-      piece.style.borderRadius =
-        Math.random() > .5
-          ? "50%"
-          : "2px";
-
-
       piece.style.setProperty(
         "--x",
-        ((Math.random() - .5) * 350) +
-        "px"
+        ((Math.random() - .5) * 320) + "px"
       );
-
 
       piece.style.setProperty(
         "--y",
-        ((Math.random() - .2) * 280) +
-        "px"
+        ((Math.random() - .2) * 250) + "px"
       );
 
-
-      document.body.appendChild(
-        piece
-      );
-
+      document.body.appendChild(piece);
 
       setTimeout(
         () => piece.remove(),
-        1000
+        950
       );
 
     }
@@ -1684,17 +2298,14 @@ body {
         window.AudioContext ||
         window.webkitAudioContext;
 
-
       if (!AudioContext) return;
 
 
       const ctx =
         new AudioContext();
 
-
       const oscillator =
         ctx.createOscillator();
-
 
       const gain =
         ctx.createGain();
@@ -1703,12 +2314,10 @@ body {
       oscillator.type =
         "sine";
 
-
       oscillator.frequency.setValueAtTime(
         520,
         ctx.currentTime
       );
-
 
       oscillator.frequency.exponentialRampToValueAtTime(
         780,
@@ -1721,16 +2330,14 @@ body {
         ctx.currentTime
       );
 
-
       gain.gain.exponentialRampToValueAtTime(
-        .15,
+        .14,
         ctx.currentTime + .01
       );
 
-
       gain.gain.exponentialRampToValueAtTime(
         .0001,
-        ctx.currentTime + .25
+        ctx.currentTime + .24
       );
 
 
@@ -1741,14 +2348,10 @@ body {
       oscillator.start();
 
       oscillator.stop(
-        ctx.currentTime + .25
+        ctx.currentTime + .24
       );
 
-    } catch (error) {
-
-      /* Sound is optional. */
-
-    }
+    } catch(e) {}
 
   }
 
@@ -1764,7 +2367,6 @@ body {
       soundEnabled =
         !soundEnabled;
 
-
       soundButton.textContent =
         soundEnabled
           ? "🔊"
@@ -1772,56 +2374,6 @@ body {
 
     }
   );
-
-
-  /* -------------------------
-     HELPERS
-  ------------------------- */
-
-  function getTypeName(type) {
-
-    const names = {
-
-      quick: "Quick task",
-
-      small: "Small goal",
-
-      big: "Big goal",
-
-      future: "Future goal"
-
-    };
-
-
-    return (
-      names[type] ||
-      "Goal"
-    );
-
-  }
-
-
-  /* -------------------------
-     SAVE
-  ------------------------- */
-
-  function save() {
-
-    try {
-
-      localStorage.setItem(
-        "iceCreamGoals",
-        JSON.stringify(goals)
-      );
-
-    } catch (error) {
-
-      /* Continue working even
-         if browser storage fails. */
-
-    }
-
-  }
 
 
   /* -------------------------
@@ -1835,3 +2387,4 @@ body {
 
 </body>
 </html>
+```
